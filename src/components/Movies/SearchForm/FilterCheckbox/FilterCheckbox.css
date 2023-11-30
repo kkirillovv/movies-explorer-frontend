@@ -1,0 +1,67 @@
+.filter-checkbox{
+    margin: auto;
+    display: flex;
+    margin: 41px 0 0;
+    padding-bottom: 69px;
+    border-bottom: solid 1px #424242;
+    justify-content: center;
+  }
+  
+  .filter-checkbox__text{
+    color: #FFF;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 18px;
+    margin: 0;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .filter-checkbox{
+      margin-top: 41px;
+      margin-bottom: 29px;
+    }
+  }
+  
+  @media screen and (max-width: 320px) {
+    .filter-checkbox{
+      margin-top: 44px;
+      margin-bottom: 29px;
+    }
+  
+    .filter-checkbox__text{
+      font-size: 11px;
+      line-height: 18px;
+    }
+  }
+  
+  
+  
+  
+  
+  .filter-checkbox__switch {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    visibility: hidden;
+    clip-path: inset(0 0 0 0);
+  }
+  
+  .filter-checkbox__psevdo-switch {
+    /* элемент span теперь сможет принимать определённую ширину и высоту */
+    display: inline-block;
+    /* элемент и текст будут правильно выровнены по вертикали. Работает в паре с inline-block */
+    vertical-align: middle;
+    border: none;
+    background: url('../../../../images/smalltumboff.svg'); 
+    background-size: cover;
+    width: 36px;
+    height: 20px;
+    margin: 0;
+    margin-right: 12px;
+    cursor: pointer;
+  }
+  
+  .filter-checkbox__switch:checked + .filter-checkbox__pseudo_type_checkbox {
+    background: url('../../../../images/smalltumb.svg');
+  }

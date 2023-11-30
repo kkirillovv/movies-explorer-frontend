@@ -1,0 +1,10 @@
+/* затем подгружаем нормализацию стилей */
+@import url(./vendor/normalize.css);
+/* подгружаем фонт Inter */
+@import url(./fonts/fonts.css);
+
+/* подгружаем общие стили интерфейса */
+.body {
+  background: #202020;
+  color: #fff;
+}

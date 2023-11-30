@@ -1,0 +1,137 @@
+.about-project {
+    margin: 110px 70px;
+  }
+  
+.about-project__title {
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 27px;
+  padding-bottom: 23px;
+  border-bottom: 1px solid #DADADA;
+  letter-spacing: -0.04em;
+  margin: 0;
+}
+
+.about-project__items {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 40px;
+  list-style: none;
+  padding: 0;
+  margin: 70px 0 0;
+}
+  
+.about-project__item-title {
+  font-size: 20px;
+  line-height: 24px;
+  margin-bottom: 26px;
+  letter-spacing: -0.8px;
+  font-weight: 400;
+}
+
+.about-project__item-subtitle {
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.about-project__chart {
+  display: grid;
+  text-align: center;
+  align-items: center;
+  grid-template-columns: 20% 80%;
+  grid-template-rows: 36px 36px;
+  margin-top: 110px;
+}
+
+.about-project__chart-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  line-height: 17px;
+  font-weight: 400;
+  min-width: 100%;
+  min-height: 100%;
+}
+
+.about-project__chart-text_type_green {
+  color: black;
+  background-color: #3DDC84;
+}
+
+.about-project__chart-text_type_grey {
+  background-color: #303030;
+}
+
+.about-project__chart-subtext {
+  margin-top: 20px;
+  font-size: 14px;
+  line-height: 17px;
+  font-weight: 500;
+  color: #8B8B8B;
+}
+
+@media screen and (max-width: 1279px) {
+  .about-project {
+    margin: 90px 50px;
+  }
+
+  .about-project__items {
+    gap: 30px;
+  }
+
+  .about-project__item-title {
+    margin-bottom: 22px;
+  }
+
+  .about-project__item-subtitle {
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+  .about-project__chart-subtext {
+    font-weight: 400;
+    margin-top: 14px;
+    color: #A0A0A0;
+  }
+}
+  
+@media screen and (max-width: 767px) {
+  .about-project {
+    margin: 70px 18px;
+  }
+
+  .about-project__title {
+    font-size: 18px;
+    line-height: 22px;
+    padding-bottom: 28px;
+  }
+
+  .about-project__items {
+    grid-template-columns: 1fr;
+    gap: 56px;
+    margin: 60px 0 0;
+  }
+
+  .about-project__item-title {
+    margin-bottom: 16px;
+    font-size: 18px;
+    line-height: 22px;
+    letter-spacing: -0.04em;
+  }
+  
+  .about-project__item-subtitle {
+    font-size: 11px;
+    line-height: 16px;
+  }
+
+  .about-project__chart-text {
+    font-size: 11px;
+    line-height: 13px;
+  }
+
+  .about-project__chart-subtext {
+    margin-top: 10px;
+    font-size: 11px;
+  }
+}

@@ -1,0 +1,30 @@
+.movie__search {
+  margin: 0 70px;
+  padding-top: 74px;
+  display: flex;
+  flex-direction: column;
+}
+
+.movies__card-list-container {
+	margin: 0 70px;
+  }
+
+@media screen and (max-width: 1279px) {
+	.movie__search {
+		margin: 0 30px;
+	}
+
+	.movies__card-list-container {
+		margin: 0 30px;
+	  }
+}
+
+@media screen and (max-width: 767px) {
+	.movie__search {
+		margin: 0 10px;
+	}
+
+	.movies__card-list-container {
+    margin: 0 10px;
+  }
+}
