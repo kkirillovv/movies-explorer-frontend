@@ -70,11 +70,15 @@
   width: 100px;
   height: 32px;
   margin: auto 70px auto 0;
-  background: url('../../images/profile.svg');
-  background-position: center;
-  background-size: 100px;
-  background-repeat: no-repeat;
 } 
+
+.navigation__button-profile_color_darkgrey {
+  background: url('../../images/profile.svg') center no-repeat;
+}
+
+.navigation__button-profile_color_darkblue {
+  background: url('../../images/profile-landing.svg') center no-repeat;
+}
 
 .navigation__burger-icon {
   display: none;

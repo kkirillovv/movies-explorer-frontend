@@ -52,10 +52,12 @@
 }
 
 .about-me__link {
+  color: #fff;
   font-weight: 500;
   font-size: 14px;
   line-height: 17px;
   margin: 99px 0 0;
+  text-decoration: none;
 }
   
 .about-me__photo {

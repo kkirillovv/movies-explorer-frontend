@@ -20,9 +20,11 @@
  
 .portfolio__item {
   border-bottom: 1px solid #424242;
-  margin-bottom: 20px;
+  padding: 19px 0 20px;
   display: flex;
   justify-content: space-between;
+  color: #fff;
+  text-decoration: none;
 }
 
 .portfolio__item:last-of-type{

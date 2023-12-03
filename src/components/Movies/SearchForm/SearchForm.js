@@ -1,7 +1,7 @@
 import './SearchForm.css'
 import FilterCheckbox from './FilterCheckbox/FilterCheckbox'
 
-function SearchForm () {
+export default function SearchForm () {
   return (
 		<>
 		<form className="search-form" name='SearchForm' method="post">
@@ -14,5 +14,3 @@ function SearchForm () {
 		</>
   )
 }
-
-export default SearchForm

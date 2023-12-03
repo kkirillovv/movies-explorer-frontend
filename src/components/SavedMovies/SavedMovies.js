@@ -5,8 +5,8 @@ import { savedMoviesData } from '../../utils/datas'
 
 export default function SavedMovies () {
   return (
-    <main className='saved-movie__content'>
-      <section className='saved-movie__search'>
+    <main className='saved-movies'>
+      <section className='saved-movies__search'>
         <SearchForm />
       </section>
 

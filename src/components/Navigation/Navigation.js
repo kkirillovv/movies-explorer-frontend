@@ -23,7 +23,7 @@ export default function Navigation ({ statusBurger, menuOnLeft }) {
               onClick={() =>{ menuOnLeft(false)}}
             >Сохранённые фильмы</NavLink>
           </div>
-          <NavLink to='/profile' className='navigation__button-profile' />
+          <NavLink to='/profile' className={'navigation__button-profile ' + (window.location.pathname === '/' && !statusBurger ? 'navigation__button-profile_color_darkblue' : 'navigation__button-profile_color_darkgrey') } />
       </div>
       <button className='navigation__burger-icon' type='button' onClick={() =>{ menuOnLeft(true)}}></button>
     </nav>

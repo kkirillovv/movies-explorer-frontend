@@ -1,4 +1,5 @@
 import './AboutMe.css'
+import { HashLink as Link } from 'react-router-hash-link'
 
 export default function AboutMe() {
   return(
@@ -9,9 +10,9 @@ export default function AboutMe() {
           <h3 className='about-me__name'>Алексей</h3>
           <h4 className='about-me__activity'>Фронтенд-разработчик, 26 лет</h4>
           <p className='about-me__description'>Родился в Томске. Имею образование и работаю по специальности инженер-конструктор химических и ядерных производств. О смене направления специальности в сторону IT задумался достаточно давно, подумал, что сейчас самое время! Так же я занимаюсь музыкой и очень люблю сноубординг.</p>
-          <p className='about-me__link'>Github</p>
+          <Link to='https://github.com/kkirillovv' className='about-me__link' target='_blank'>Github</Link>
         </div>
-        <div className='about-me__photo' alt='Фото'></div>
+        <div className='about-me__photo'></div>
       </div>
     </section>
   )

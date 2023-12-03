@@ -1,8 +1,8 @@
 import Header from "../Header/Header"
 import Footer from '../Footer/Footer'
 
-function StandartPage({element: Component, ...props}) {
-  return(
+export default function StandartPage({element: Component, ...props}) {
+  return (
     <>
     <Header />
     <Component {...props} />
@@ -10,5 +10,3 @@ function StandartPage({element: Component, ...props}) {
     </>
   )
 }
-
-export default StandartPage

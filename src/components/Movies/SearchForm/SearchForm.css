@@ -25,11 +25,11 @@
 }
 
 .search-form__input:focus {
-	outline:none
+	outline: 1px solid #fff;
 }
 
 .search-form__input:active {
-	border: none;
+  outline: 1px solid #999;
 }
 
 .search-form__button{

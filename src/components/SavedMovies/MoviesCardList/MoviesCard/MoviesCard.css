@@ -24,7 +24,7 @@
   margin: 16px 0 0 16px;
 }
 
-.movie-card__length {
+.movies-card__length {
   font-style: normal;
   font-weight: 400;
   font-size: 11px;
@@ -62,7 +62,7 @@
     margin: 14px 0 0 14px;
   }
 
-  .movie-card__length {
+  .movies-card__length {
     margin: 15px 0 14px 14px;
   }
 
@@ -93,7 +93,7 @@
     margin: 14px 0 0 14px;
   }
 
-  .movie-card__length {
+  .movies-card__length {
     font-size: 10px;
     line-height: 12px;
     margin: 14px;
