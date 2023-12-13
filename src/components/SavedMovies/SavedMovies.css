@@ -1,0 +1,30 @@
+.saved-movies__search {
+    margin: 0 70px;
+    padding-top: 74px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .saved-movies__card-list-container {
+      margin: 0 70px;
+    }
+  
+  @media screen and (max-width: 1279px) {
+      .saved-movies__search {
+          margin: 0 30px;
+      }
+  
+      .saved-movies__card-list-container {
+          margin: 0 30px;
+        }
+  }
+  
+  @media screen and (max-width: 767px) {
+      .saved-movies__search {
+          margin: 0 10px;
+      }
+  
+      .saved-movies__card-list-container {
+      margin: 0 10px;
+    }
+  }

@@ -1,0 +1,20 @@
+.page {
+    /* установили ограничение по минимальной и максимальной ширине */
+    min-width: 320px;
+    max-width: 1280px;
+    /* для экранов больше 1280px отцентрировали весь контент */ 
+    margin: 0 auto;
+    font-family: 'Inter', Arial, sans-serif;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+  }
+
+  .list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
