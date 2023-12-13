@@ -1,19 +1,47 @@
+import React, {useState} from 'react'
+import { useNavigate } from 'react-router-dom'
+import * as auth from '../../utils/Auth'
 import './Register.css'
 import AuthPage from '../AuthPage/AuthPage'
 import { UseFormAndValidation } from '../../hooks/useFormAndValidation'
 
-export default function register() {
+export default function Register({ handleAuth }) {
 
-  const {values, handleChange, errors} = UseFormAndValidation({name: '', email: '', password: ''})
+  const {values, handleChange, errors, buttonType} = UseFormAndValidation({name: '', email: '', password: ''})
+  const [errorApi, setErrorApi] = useState('')
+  const navigate = useNavigate()
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    if (!values.email || !values.password || !values.name) { // если один из инпутов пустой
+      return // вышли
+    }
+    auth.register(values.name, values.email, values.password).then((res) => {
+      console.log ('Вы успешно зарегистрировались!')
+      const token = auth.login(values.email, values.password)
+        if (token) { // если все отлично
+          localStorage.setItem('jwt', token)
+          handleAuth() // передали
+          navigate('/movies', {replace: true}) // перешли
+        } else {
+          return Promise.reject("Токен не предоставлен!")
+        }
+    }).catch((err) => {
+      setErrorApi(err)
+    })
+  }
 
   return (
     <AuthPage
 			name = { 'register' }
 			title = { 'Добро пожаловать!' }
 			button = { 'Зарегистрироваться' }
+      buttonType = { buttonType }
 			note = { 'Уже зарегистрированы? ' }
 			link = { '/signin' }
 			linkText = { 'Войти' }
+			handleSubmit = { handleSubmit }
+			errorApi = { errorApi }
 		>
 			<p className='auth-page__input-name'>Имя</p>
 			<label className='auth-page__field'>

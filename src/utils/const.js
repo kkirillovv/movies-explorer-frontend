@@ -1,0 +1,1 @@
+export const imagePathUrl = 'https://api.nomoreparties.co'

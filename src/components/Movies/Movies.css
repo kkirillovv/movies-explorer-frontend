@@ -39,6 +39,11 @@
   cursor: pointer;
 }
 
+.movies__error {
+  color: #EE3465;
+  text-align: center;
+}
+
 @media screen and (max-width: 1279px) {
 	.movies__search {
 		margin: 0 30px;

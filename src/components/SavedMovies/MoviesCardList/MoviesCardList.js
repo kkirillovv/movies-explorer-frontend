@@ -1,14 +1,12 @@
 import './MoviesCardList.css'
 import MoviesCard from './MoviesCard/MoviesCard'
 
-function MoviesCardList({ moviesData }) {
+export default function MoviesCardList({ moviesData }) {
   return(
 		<ul className='movies-card-list list'>
-      { moviesData.map((card, i) => {
-        return(<MoviesCard image={card.image} name={card.name} length={card.length} savedStatus={card.savedStatus} key = {i}/>)
+      { moviesData.map((card) => {
+        return(<MoviesCard card = { card } key = { card.id } />)
       }) }			
 		</ul>
   )
 }
-
-export default MoviesCardList
