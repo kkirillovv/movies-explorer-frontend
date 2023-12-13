@@ -6,4 +6,4 @@
 https://github.com/kkirillovv/movies-explorer-frontend/pull/2
 
 Ссылка на готовый сайт:
-kme.nomoredomainsmonster.ru
+https://kme.nomoredomainsmonster.ru
