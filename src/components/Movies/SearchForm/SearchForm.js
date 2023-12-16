@@ -4,8 +4,8 @@ import { UseFormAndValidation } from '../../../hooks/useFormAndValidation'
 
 export default function SearchForm ({ handleSubmit }) {
 
-  const {values, handleChange, errors} = UseFormAndValidation({name: '', email: '', password: ''})
-  
+  const {values, handleChange, errors} = UseFormAndValidation({movie: `${localStorage.getItem('searchFilms') || ""}`})
+
   return (
 		<>
 		<form className="search-form" name='SearchForm' id='SearchForm' method="post" onSubmit={ handleSubmit }>

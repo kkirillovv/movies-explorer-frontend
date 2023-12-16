@@ -83,8 +83,6 @@ class MainApi {
 // C. Объявляем Api --------------------------------------------------------
 const token = localStorage.getItem('jwt')
 
-console.log('token - ' + token)
-
 export const mainApi = new MainApi({
   baseUrl: 'http://localhost:3000',
   // baseUrl: 'https://api.kme.nomoredomainsmonster.ru',

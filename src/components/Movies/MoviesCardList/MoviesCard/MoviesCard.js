@@ -10,9 +10,6 @@ export default function MoviesCard ({ card }) {
   const currentUser = useContext(CurrentUserContext)   // контекст текущего юзера
   const [savedStatus, setSavedStatus ] = useState(card.savedStatus)  // состояние сердечка
 
-  const ff = currentUser._id;
-  console.log('zz - ' + ff)
-
   function onSavedStatus () {
     let savedMovies = JSON.parse(localStorage.getItem('savedMovies')) || [] // забираем массив сохраненных фильмов
     const isMovieSaved = savedMovies.some(savedMovie => savedMovie.movieId === card.id)
@@ -60,7 +57,9 @@ export default function MoviesCard ({ card }) {
 
   return (
 		<li className='movies-card'>
-			<img className='movies-card__image' src={ imagePathUrl + card.image.url } alt={`Постер к фильму - ${ card.nameRU }`} />
+      <a className='movies-card__trailer-link' href={card.trailerLink} target='_blank' rel='noreferrer'>
+			  <img className='movies-card__image' src={ imagePathUrl + card.image.url } alt={`Постер к фильму - ${ card.nameRU }`} />
+      </a>
 			<h3 className='movies-card__name'>{ card.nameRU }</h3>
 			<p className='movies-card__length'>{ toHoursAndMinutes(card.duration) }</p>
 			<button type='button' className={ savedStatus ? 'movies-card__saved' : 'movies-card__unsaved' } onClick={ onSavedStatus }></button>

@@ -10,8 +10,6 @@ export default function Movies () {
 
   const [hasSearched, setHasSearched] = useState(false)   // состояние предпоиска
   const [preloader, setPreloader] = useState(false)       // состояние прелоадера
-  const [searchFilms, setSearchFilms] = useState('')      // то, что ищем
-  const [shortFilm, setShortFilm] = useState(false)       // короткометражки?
   const [searchResults, setSearchResults] = useState([])  // результаты поиска
   const [searchError, setSearchError] = useState('')      // ошибка поиска
   const [countCard, setCountCard] = useState(12)          // количество выводимых карточек
@@ -22,14 +20,14 @@ export default function Movies () {
   useEffect(() => {
     const count = mathCauntCards(window.innerWidth)
     setCountCard(count)
+    const movies = JSON.parse(localStorage.getItem('getFilms')) || []
+    if (movies.length !== 0 ) {
+      setHasSearched(true)
+      setSearchResults(movies)
+    }
   }, [])
 
-  function handleSubmit(e) {
-    e.preventDefault()
-    setHasSearched(true)
-    setPreloader(true)
-    setSearchFilms(e.target.movie.value)
-    setShortFilm(e.target.shortfilms.checked)
+  function getFilms(searchFilms, shortFilm) {
     moviesApi.getPageData()
       .then(([allMovies]) => {
         allMovies.forEach((item) => {
@@ -37,6 +35,9 @@ export default function Movies () {
         }) 
         const movies = filterFilms(allMovies, searchFilms, shortFilm) 
         setSearchResults(movies)
+        localStorage.setItem('searchFilms', searchFilms)
+        localStorage.setItem('shortFilm', shortFilm)
+        localStorage.setItem('getFilms', JSON.stringify(movies))
       })
       .catch((err) => {
         setSearchError(`Во время запроса произошла ошибка: ${err}. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз.`)
@@ -44,6 +45,13 @@ export default function Movies () {
       .finally(() => {
         setPreloader(false)
       })
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault()
+    setHasSearched(true)
+    setPreloader(true)
+    getFilms(e.target.movie.value, e.target.shortfilms.checked)
   }
 
   function loadMore () {
@@ -63,7 +71,7 @@ export default function Movies () {
             : searchResults.length === 0 
               ? <p className='movies__error'>Ничего не найдено</p>
               : <section className='movies__card-list-container'>
-                  <MoviesCardList visibleCard = { visibleCard }  />
+                  <MoviesCardList visibleCard = { visibleCard } />
                   <div className='movies__card-list-more'>
                   { 
                     countCard < searchResults.length && (<button className='movies__card-list-more-button' onClick={ loadMore } type='button'>Ещё</button>)

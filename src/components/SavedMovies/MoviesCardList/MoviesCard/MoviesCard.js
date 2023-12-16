@@ -28,7 +28,9 @@ export default function MoviesCard({ card }) {
   return (
     savedStatus && (
     <li className='movies-card'>
-      <img className='movies-card__image' src={ card.image} alt={`Постер к фильму - ${ card.nameRU }`} />
+      <a className='movies-card__trailer-link' href={card.trailerLink} target='_blank' rel='noreferrer'>
+        <img className='movies-card__image' src={ card.image} alt={`Постер к фильму - ${ card.nameRU }`} />
+      </a>
       <h3 className='movies-card__name'>{ card.nameRU }</h3>
       <p className='movies-card__length'>{ toHoursAndMinutes(card.duration) }</p>
       <button type='button' className='movies-card__delete' onClick={ onDelete }></button>

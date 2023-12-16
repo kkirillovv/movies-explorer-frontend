@@ -17,7 +17,6 @@ export default function Register({ handleAuth }) {
       return // вышли
     }
     auth.register(values.name, values.email, values.password).then((res) => {
-      console.log ('Вы успешно зарегистрировались!')
       const token = auth.login(values.email, values.password)
         if (token) { // если все отлично
           localStorage.setItem('jwt', token)
