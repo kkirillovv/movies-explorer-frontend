@@ -84,8 +84,8 @@ class MainApi {
 const token = localStorage.getItem('jwt')
 
 export const mainApi = new MainApi({
-  baseUrl: 'http://localhost:3000',
-  // baseUrl: 'https://api.kme.nomoredomainsmonster.ru',
+  // baseUrl: 'http://localhost:3000',
+  baseUrl: 'https://api.kme.nomoredomainsmonster.ru',
   headers: {
     authorization: `Bearer ${token}`,
     'Content-Type': 'application/json'
