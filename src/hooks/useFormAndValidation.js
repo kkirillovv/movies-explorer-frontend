@@ -27,7 +27,7 @@ export function UseFormAndValidation(inputValues) {
         ? setErrors({...errors, [name]: 'Пожалуйста, правильно заполните поле'}) 
         : setErrors({...errors, [name]: ''})
     setIsValid(e.target.closest('form').checkValidity())
-    e.target.validationMessage || !isValidReg(value, name) 
+    e.target.validationMessage || !isValidReg(value, name) || JSON.stringify(values).includes('""')
       ? setButtonType(true) 
       : setButtonType(false)
 	}
