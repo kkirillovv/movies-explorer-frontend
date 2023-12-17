@@ -4,8 +4,6 @@ export default function FilterCheckbox () {
 
   const shortFilm = localStorage.getItem('shortFilm') === 'true' ? true : false
 
-	console.log('shortFilm - ' + shortFilm)
-
   return (
 		<div className='filter-checkbox'>
 			<label htmlFor="short-films">

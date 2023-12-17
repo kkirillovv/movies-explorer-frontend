@@ -62,7 +62,7 @@ export default function MoviesCard ({ card }) {
       </a>
 			<h3 className='movies-card__name'>{ card.nameRU }</h3>
 			<p className='movies-card__length'>{ toHoursAndMinutes(card.duration) }</p>
-			<button type='button' className={ savedStatus ? 'movies-card__saved' : 'movies-card__unsaved' } onClick={ onSavedStatus }></button>
+			<button type='button' className={ savedStatus ? 'movies-card__saved' : 'movies-card__unsaved' } onClick={ onSavedStatus } onTouchStart={onSavedStatus}></button>
 		</li>
   )
 }

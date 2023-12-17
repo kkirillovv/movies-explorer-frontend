@@ -33,7 +33,7 @@ export default function MoviesCard({ card }) {
       </a>
       <h3 className='movies-card__name'>{ card.nameRU }</h3>
       <p className='movies-card__length'>{ toHoursAndMinutes(card.duration) }</p>
-      <button type='button' className='movies-card__delete' onClick={ onDelete }></button>
-    </li>)
+      <button type='button' className='movies-card__delete' onClick={ onDelete } onTouchStart={ onDelete }></button>
+		</li>)
   )
 }

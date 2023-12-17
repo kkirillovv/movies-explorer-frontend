@@ -21,7 +21,10 @@
   font-size: 13px;
   font-weight: 500;
   line-height: 16px;
-  margin: 16px 0 0 16px;
+  margin: 16px 50px 0 16px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .movies-card__length {
@@ -72,7 +75,7 @@
   }
 
   .movies-card__name {
-    margin: 14px 0 0 14px;
+    margin: 14px 48px 0 14px;
   }
 
   .movies-card__length {
@@ -103,7 +106,7 @@
   .movies-card__name {
     font-size: 12px;
     line-height: 15px;
-    margin: 14px 0 0 14px;
+    margin: 14px 44px 0 10px;
   }
 
   .movies-card__length {
