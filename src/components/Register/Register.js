@@ -1,5 +1,4 @@
 import React, {useState} from 'react'
-import { useNavigate } from 'react-router-dom'
 import * as auth from '../../utils/Auth'
 import './Register.css'
 import AuthPage from '../AuthPage/AuthPage'
@@ -9,7 +8,6 @@ export default function Register({ handleAuth }) {
 
   const {values, handleChange, errors, buttonType} = UseFormAndValidation({name: '', email: '', password: ''})
   const [errorApi, setErrorApi] = useState('')
-  const navigate = useNavigate()
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -21,7 +19,6 @@ export default function Register({ handleAuth }) {
         if (token) { // если все отлично
           localStorage.setItem('jwt', token)
           handleAuth() // передали
-          navigate('/movies', {replace: true}) // перешли
         } else {
           return Promise.reject("Токен не предоставлен!")
         }

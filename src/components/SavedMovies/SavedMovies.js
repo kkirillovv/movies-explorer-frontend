@@ -6,16 +6,19 @@ import { filterFilms } from '../../utils/func'
 
 export default function SavedMovies () {
 
+  const [Results, setResults] = useState([])
   const [searchResults, setSearchResults] = useState([])
 
   useEffect(() => {
     const savedMovies = JSON.parse(localStorage.getItem('savedMovies')) || []
+    setResults(savedMovies)
     setSearchResults(savedMovies)
   }, [])
 
   function handleSubmit(e) {
     e.preventDefault()
-    const movies = filterFilms(searchResults, e.target.movie.value, e.target.shortfilms.checked) 
+    
+    const movies = filterFilms(Results, e.target.movie.value, e.target.shortfilms.checked) 
     setSearchResults(movies)
   }
 

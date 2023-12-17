@@ -1,11 +1,8 @@
 import { checkResponse } from './CheckResponse.js'
-
-// export const BASE_URL = 'http://localhost:3000'
-export const BASE_URL = 'https://api.kme.nomoredomainsmonster.ru'
-// export const BASE_URL = 'https://api.kirillovk.nomoredomainsrocks.ru'
+import { baseUrl } from '../utils/const'
 
 export const register = async (name, email, password) => {
-  const response = await fetch(`${BASE_URL}/signup`, {
+  const response = await fetch(`${baseUrl}/signup`, {
       method: 'POST',
       headers: {
           'Accept': 'application/json',
@@ -18,7 +15,7 @@ export const register = async (name, email, password) => {
 }
 
 export const login = async (email, password) => {
-  const response = await fetch(`${BASE_URL}/signin`, {
+  const response = await fetch(`${baseUrl}/signin`, {
     method: 'POST',
     headers: {
         'Accept': 'application/json',
@@ -31,7 +28,7 @@ export const login = async (email, password) => {
 }
 
 export const checkToken = async (token) => {
-  const response = await fetch(`${BASE_URL}/users/me`, {
+  const response = await fetch(`${baseUrl}/users/me`, {
     method: 'GET',
     headers: {
         'Accept': 'application/json',

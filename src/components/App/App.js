@@ -11,14 +11,17 @@ import Profile from '../Profile/Profile'
 import ProtectRoute from '../ProtectRoute/ProtectRoute'
 import PageNotFound from '../PageNotFound/PageNotFound'
 import * as auth from '../../utils/Auth'
-import { mainApi } from '../../utils/MainApi'
+import { MainApi } from '../../utils/MainApi'
+import { baseUrl } from '../../utils/const'
 import { CurrentUserContext } from '../../context/CurrentUserContext'
+import { useNavigate } from 'react-router-dom'
 
 export default function App() {
 
   // стейты текущего пользователя
   const [currentUser, getUserInfo] = useState({})
   const [loggedIn, setLoggedIn] = useState(false)
+  const navigate = useNavigate()
 
   useEffect(() => {
     if (localStorage.getItem('jwt')) {
@@ -35,16 +38,23 @@ export default function App() {
     }
   }, [])
 
-  const handleAuth = () => {
-    mainApi.getPageData()
-    .then(([user, savedMovies]) => {
+  const handleAuth = async () => {
+    const mainApi = new MainApi({
+      baseUrl: baseUrl,
+      headers: {
+        authorization: `Bearer ${localStorage.getItem('jwt')}`,
+        'Content-Type': 'application/json'
+      }
+    })
+    try { 
+      const [user, savedMovies] = await mainApi.getPageData()
       getUserInfo(user.data)
       localStorage.setItem('savedMovies', JSON.stringify(savedMovies))
       setLoggedIn(true)
-    })
-    .catch((err) => {
+      navigate('/movies', {replace: true}) // перешли
+    } catch(err) {
       console.error(`Что-то пошло не так: ${err}`)
-    })
+    }
   }
 
   return (
