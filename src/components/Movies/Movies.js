@@ -47,11 +47,17 @@ export default function Movies () {
       })
   }
 
+  const [ error, setError ] = useState("")
+
   function handleSubmit(e) {
     e.preventDefault()
-    setHasSearched(true)
-    setPreloader(true)
-    getFilms(e.target.movie.value, e.target.shortfilms.checked)
+    if (e.target.movie.value !== "") {
+      setHasSearched(true)
+      setPreloader(true)
+      setError("")
+      getFilms(e.target.movie.value, e.target.shortfilms.checked)
+    }
+    else setError('Нужно ввести ключевое слово')
   }
 
   function loadMore () {
@@ -61,7 +67,7 @@ export default function Movies () {
   return (
     <main className='movies'>
       <section className='movies__search'>
-        <SearchForm handleSubmit = { handleSubmit } />
+        <SearchForm handleSubmit = { handleSubmit } error = { error } />
       </section>
       { hasSearched
         ? preloader 
