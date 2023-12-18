@@ -6,7 +6,7 @@ import MoviesCardList from './MoviesCardList/MoviesCardList'
 import { moviesApi } from '../../utils/MoviesApi'
 import { filterFilms, mathCauntCards, mathAddCards } from '../../utils/func'
 
-export default function Movies () {
+export default function Movies ({ mainApi } ) {
 
   const [hasSearched, setHasSearched] = useState(false)   // состояние предпоиска
   const [preloader, setPreloader] = useState(false)       // состояние прелоадера
@@ -22,6 +22,7 @@ export default function Movies () {
     setCountCard(count)
     const movies = JSON.parse(localStorage.getItem('getFilms')) || []
     if (movies.length !== 0 ) {
+      setLike(movies, savedMovies)
       setHasSearched(true)
       setSearchResults(movies)
     }
@@ -30,9 +31,7 @@ export default function Movies () {
   function getFilms(searchFilms, shortFilm) {
     moviesApi.getPageData()
       .then(([allMovies]) => {
-        allMovies.forEach((item) => {
-          if (savedMovies.some(savedMovie => savedMovie.movieId === item.id)) item.savedStatus = true // прибавляем лайки
-        }) 
+        setLike(allMovies, savedMovies)
         const movies = filterFilms(allMovies, searchFilms, shortFilm) 
         setSearchResults(movies)
         localStorage.setItem('searchFilms', searchFilms)
@@ -45,6 +44,16 @@ export default function Movies () {
       .finally(() => {
         setPreloader(false)
       })
+  }
+
+  function setLike(getFilms, savedMovies) {
+    getFilms.forEach((item) => {
+      if (savedMovies.some(savedMovie => savedMovie.movieId === item.id)) {
+        item.savedStatus = true // прибавляем лайк
+      } else { 
+        item.savedStatus = false // убираем лайк
+      }
+    })
   }
 
   const [ error, setError ] = useState("")
@@ -77,7 +86,7 @@ export default function Movies () {
             : searchResults.length === 0 
               ? <p className='movies__error'>Ничего не найдено</p>
               : <section className='movies__card-list-container'>
-                  <MoviesCardList visibleCard = { visibleCard } />
+                  <MoviesCardList visibleCard = { visibleCard } mainApi = { mainApi } />
                   <div className='movies__card-list-more'>
                   { 
                     countCard < searchResults.length && (<button className='movies__card-list-more-button' onClick={ loadMore } type='button'>Ещё</button>)

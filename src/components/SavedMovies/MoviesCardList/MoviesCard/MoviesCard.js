@@ -1,9 +1,8 @@
 import { useState } from 'react'
 import './MoviesCard.css'
-import { mainApi } from '../../../../utils/MainApi'
 import { toHoursAndMinutes } from '../../../../utils/func'
 
-export default function MoviesCard({ card }) {
+export default function MoviesCard({ mainApi, card }) {
 
   const [savedStatus, setSavedStatus ] = useState(true)  // состояние сохрангения карточки
 

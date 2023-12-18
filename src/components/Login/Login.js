@@ -3,11 +3,13 @@ import * as auth from '../../utils/Auth'
 import './Login.css'
 import AuthPage from '../AuthPage/AuthPage'
 import { UseFormAndValidation } from '../../hooks/useFormAndValidation.js'
+import { useNavigate } from 'react-router-dom'
 
 export default function Login({ handleAuth }) {
 
 	const {values, handleChange, errors, buttonType} = UseFormAndValidation({email: '', password: ''})
   const [errorApi, setErrorApi] = useState('')
+  const navigate = useNavigate()
 
   function handleSubmit (e) {
     e.preventDefault()
@@ -18,6 +20,7 @@ export default function Login({ handleAuth }) {
       if (data.token) { // если все отлично
         localStorage.setItem('jwt', data.token)
         handleAuth() // передали
+        navigate('/movies', {replace: true}) // перешли
       } else {
         return Promise.reject("Токен не предоставлен!")
       }

@@ -4,7 +4,7 @@ import SearchForm from './SearchForm/SearchForm'
 import MoviesCardList from './MoviesCardList/MoviesCardList'
 import { filterFilms } from '../../utils/func'
 
-export default function SavedMovies () {
+export default function SavedMovies ({ mainApi }) {
 
   const [Results, setResults] = useState([])
   const [searchResults, setSearchResults] = useState([])
@@ -29,7 +29,7 @@ export default function SavedMovies () {
       </section>
 
       <section className='saved-movies__card-list-container'>
-        <MoviesCardList moviesData = { searchResults } />
+        <MoviesCardList moviesData = { searchResults } mainApi = { mainApi } />
       </section>
     </main>
   )

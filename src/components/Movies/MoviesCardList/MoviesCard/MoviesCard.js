@@ -1,11 +1,10 @@
 import {useContext, useState} from 'react'
 import './MoviesCard.css'
-import { mainApi } from '../../../../utils/MainApi'
 import { toHoursAndMinutes } from '../../../../utils/func'
 import { imagePathUrl } from '../../../../utils/const'
 import { CurrentUserContext } from '../../../../context/CurrentUserContext'
 
-export default function MoviesCard ({ card }) {
+export default function MoviesCard ({ mainApi, card }) {
 
   const currentUser = useContext(CurrentUserContext)   // контекст текущего юзера
   const [savedStatus, setSavedStatus ] = useState(card.savedStatus)  // состояние сердечка

@@ -41,9 +41,9 @@
 .movies-card__delete {
   position: absolute;
   right: 28px;
-  bottom: 51px;
-  width: 7px;
-  height: 8px;
+  bottom: 44px;
+  width: 12px;
+  height: 12px;
   background-image: url(../../../../images/delete.svg);
   background-color:#222;
   background-size: cover;
@@ -69,12 +69,7 @@
     margin: 15px 0 14px 14px;
   }
 
-  .movies-card__saved {
-    right: 22px;
-    bottom: 42px;
-  }
-
-  .movies-card__unsaved {
+  .movies-card__delete {
     right: 22px;
     bottom: 42px;
   }

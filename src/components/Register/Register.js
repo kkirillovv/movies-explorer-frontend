@@ -15,14 +15,17 @@ export default function Register({ handleAuth }) {
       return // вышли
     }
     auth.register(values.name, values.email, values.password).then((res) => {
-      const token = auth.login(values.email, values.password)
-        if (token) { // если все отлично
-          localStorage.setItem('jwt', token)
+      auth.login(values.email, values.password).then((data) => {
+        if (data.token) { // если все отлично
+          localStorage.setItem('jwt', data.token)
           handleAuth() // передали
         } else {
           return Promise.reject("Токен не предоставлен!")
         }
-    }).catch((err) => {
+      }).catch((err) => {
+        setErrorApi(err)
+      })
+    }).catch((err) => { 
       setErrorApi(err)
     })
   }

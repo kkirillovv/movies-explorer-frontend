@@ -23,12 +23,27 @@ export default function App() {
   const [loggedIn, setLoggedIn] = useState(false)
   const navigate = useNavigate()
 
+  const mainApi = new MainApi({
+    baseUrl: baseUrl,
+    headers: {
+      authorization: `Bearer ${localStorage.getItem('jwt')}`,
+      'Content-Type': 'application/json'
+    }
+  })
+
   useEffect(() => {
     if (localStorage.getItem('jwt')) {
       const jwt = localStorage.getItem('jwt')
       auth.checkToken(jwt).then((res) => {
         if (res) {
-          handleAuth()
+          mainApi.getPageData()
+          .then(([user, savedMovies]) => {
+            getUserInfo(user.data)
+            localStorage.setItem('savedMovies', JSON.stringify(savedMovies))
+          })
+          .catch((err) => {
+            console.error(`Что-то пошло не так: ${err}`)
+          })
         } else {
           return Promise.reject("Токен устарел!")
         }
@@ -36,25 +51,11 @@ export default function App() {
         console.error(`Что-то пошло не так: ${err}`)
       })
     }
-  }, [])
+  }, [loggedIn])
 
   const handleAuth = async () => {
-    const mainApi = new MainApi({
-      baseUrl: baseUrl,
-      headers: {
-        authorization: `Bearer ${localStorage.getItem('jwt')}`,
-        'Content-Type': 'application/json'
-      }
-    })
-    try { 
-      const [user, savedMovies] = await mainApi.getPageData()
-      getUserInfo(user.data)
-      localStorage.setItem('savedMovies', JSON.stringify(savedMovies))
-      setLoggedIn(true)
-      navigate('/movies', {replace: true}) // перешли
-    } catch(err) {
-      console.error(`Что-то пошло не так: ${err}`)
-    }
+    setLoggedIn(true)
+    navigate('/movies', {replace: true}) // перешли
   }
 
   return (
@@ -62,8 +63,8 @@ export default function App() {
       <div className="page">
         <Routes>
           <Route path='/' element={<CommonPartPage element={ Main } loggedIn={ loggedIn } />} />
-          <Route path="/movies" element={<ProtectRoute element={ CommonPartPage } page={ Movies } loggedIn={ loggedIn } />} />
-          <Route path='/saved-movies' element={<ProtectRoute element={ CommonPartPage} page={ SavedMovies } loggedIn={ loggedIn } />} />
+          <Route path="/movies" element={<ProtectRoute element={ CommonPartPage } page={ Movies } loggedIn={ loggedIn } mainApi = { mainApi } />} />
+          <Route path='/saved-movies' element={<ProtectRoute element={ CommonPartPage} page={ SavedMovies } loggedIn={ loggedIn } mainApi = { mainApi } />} />
           <Route path='/signup' element={loggedIn ? <Navigate to="/profile" replace /> : <Register handleAuth={ handleAuth } />} />
           <Route path='/signin' element={loggedIn ? <Navigate to="/profile" replace /> : <Login handleAuth={ handleAuth } />} />
           <Route path='/profile' element={<ProtectRoute element={ Profile } loggedIn={ loggedIn } loggedOut={ setLoggedIn } />} />
