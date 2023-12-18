@@ -10,7 +10,7 @@ export default function SearchForm ({ handleSubmit }) {
 		<>
     <form className="search-form" name='SearchForm' id='SearchForm' method="post" onSubmit={ handleSubmit }>
 			<label className="search-form__field">
-        <input type="text" name="movie" value={values.movie || ""} onChange={ handleChange } className="search-form__input" placeholder="Фильм" required minLength="2" maxLength="140" id="search-form-input"/>
+        <input type="text" name="movie" value={values.movie || ""} onChange={ handleChange } className="search-form__input" placeholder="Фильм" id="search-form-input"/>
      		<span className={`auth-page__input-error search-form-input-error ${errors.movie && "auth-page__input-error_active"}`}>{errors.movie || ""}</span>
 			</label>
 			<button type='submit' className='search-form__button'></button>

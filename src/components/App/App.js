@@ -40,6 +40,7 @@ export default function App() {
           .then(([user, savedMovies]) => {
             getUserInfo(user.data)
             localStorage.setItem('savedMovies', JSON.stringify(savedMovies))
+            setLoggedIn(true)
           })
           .catch((err) => {
             console.error(`Что-то пошло не так: ${err}`)
@@ -67,7 +68,7 @@ export default function App() {
           <Route path='/saved-movies' element={<ProtectRoute element={ CommonPartPage} page={ SavedMovies } loggedIn={ loggedIn } mainApi = { mainApi } />} />
           <Route path='/signup' element={loggedIn ? <Navigate to="/profile" replace /> : <Register handleAuth={ handleAuth } />} />
           <Route path='/signin' element={loggedIn ? <Navigate to="/profile" replace /> : <Login handleAuth={ handleAuth } />} />
-          <Route path='/profile' element={<ProtectRoute element={ Profile } loggedIn={ loggedIn } loggedOut={ setLoggedIn } />} />
+          <Route path='/profile' element={<ProtectRoute element={ Profile } loggedIn={ loggedIn } loggedOut={ setLoggedIn } mainApi = { mainApi } />} />
           <Route path='*' element={<PageNotFound />} />
         </Routes>
       </div>

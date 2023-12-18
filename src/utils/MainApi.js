@@ -81,12 +81,3 @@ export class MainApi {
     return Promise.all([this.getUserInfo(), this.getSavedMovies()])
   }
 }
-
-// C. Объявляем Api --------------------------------------------------------
-export const mainApi = new MainApi({
-  baseUrl: baseUrl,
-  headers: {
-    authorization: `Bearer ${localStorage.getItem('jwt')}`,
-    'Content-Type': 'application/json'
-  }
-})

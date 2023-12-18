@@ -4,7 +4,6 @@ import './Profile.css'
 import Header from '../Header/Header'
 import { UseFormAndValidation } from '../../hooks/useFormAndValidation'
 import { CurrentUserContext } from '../../context/CurrentUserContext'
-import { mainApi } from '../../utils/MainApi'
 
 export default function Profile({element: Component, loggedOut, ...props}) {
 	
@@ -13,13 +12,18 @@ export default function Profile({element: Component, loggedOut, ...props}) {
   const history = useNavigate()
   const [ editUser, setEditUser ] = useState(currentUser)
   const [ buttonActive, setButtonActive ] = useState(false)
+  const [errorApi, setErrorApi] = useState('')
 
   function handleSubmit (e) {
     e.preventDefault()
-    mainApi.editUserInfo(values).then((user) => {
+    props.mainApi.editUserInfo(values).then((user) => {
       getUserInfo(user)
+      setEditUser(user)
+      setButtonActive(false)
+      setErrorApi('')
     }).catch((err) => {
       console.log(err)
+      setErrorApi('Такой адрес уже существует в базе')
     })
   }
 
@@ -60,6 +64,7 @@ export default function Profile({element: Component, loggedOut, ...props}) {
           </label>
           <span className={`profile__input-error email-input-error ${errors.email && "profile__input-error_active"}`}>{errors.email || ""}</span>
 				</form>
+        <span className={ errorApi ? 'profile__input-error profile__input-error_active' : 'profile__input-error'}>{ errorApi }</span>
         <button type='submit' disabled={!buttonActive} className={buttonActive ? 'profile__link' : 'profile__link profile__link_type_white'} onClick={ handleSubmit }>Редактировать</button><br />
 				<button type='button' className='profile__link profile__link_type_red' onClick={ signOut }>Выйти из аккаунта</button>
 			</main>
