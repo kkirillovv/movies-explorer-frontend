@@ -19,9 +19,9 @@ function mathAddCards (windowWidth) {
 }
 
 function toHoursAndMinutes(totalMinutes, type) {
-  const hours = Math.floor(totalMinutes / 60) 
+  const hours = Math.floor(totalMinutes / 60)
   const minutes = totalMinutes % 60
-  return type 
+  return type
   ? (hours < 10 ? "0" : "") + hours.toString() + ":" + (minutes < 10 ? "0" : "") + minutes.toString()
   : (hours > 0 ? hours.toString() + "ч " : "") + minutes.toString() + "м "
 }

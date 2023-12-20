@@ -1,11 +1,9 @@
 import {useState} from 'react'
 import './SearchForm.css'
 import FilterCheckbox from './FilterCheckbox/FilterCheckbox'
-// import { UseFormAndValidation } from '../../../hooks/useFormAndValidation'
 
-export default function SearchForm ({ handleSubmit, error }) {
+export default function SearchForm ({ handleChangeSwtich, handleSubmit, error }) {
 
-  // const {values, handleChange, errors} = UseFormAndValidation({movie: `${localStorage.getItem('searchFilms') || ""}`})
   const [ value, setValues] = useState(localStorage.getItem('searchFilms') || "")
 
   function handleChange (e) {
@@ -22,7 +20,7 @@ export default function SearchForm ({ handleSubmit, error }) {
 			</label>
 			<button type='submit' className='search-form__button'></button>
 		</form>
-		<FilterCheckbox />
+		<FilterCheckbox handleChangeSwtich = { handleChangeSwtich }/>
 		</>
   )
 }

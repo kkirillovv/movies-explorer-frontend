@@ -1,5 +1,3 @@
-import { baseUrl } from '../utils/const'
-
 export class MainApi {
   constructor(options) { // инициировали this, сконструировали и вернули его
     this._url = options.baseUrl
