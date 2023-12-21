@@ -1,19 +1,46 @@
+import React, {useState} from 'react'
+import * as auth from '../../utils/Auth'
 import './Register.css'
 import AuthPage from '../AuthPage/AuthPage'
 import { UseFormAndValidation } from '../../hooks/useFormAndValidation'
 
-export default function register() {
+export default function Register({ handleAuth }) {
 
-  const {values, handleChange, errors} = UseFormAndValidation({name: '', email: '', password: ''})
+  const {values, handleChange, errors, buttonType} = UseFormAndValidation({name: '', email: '', password: ''})
+  const [errorApi, setErrorApi] = useState('')
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    if (!values.email || !values.password || !values.name) { // если один из инпутов пустой
+      return // вышли
+    }
+    auth.register(values.name, values.email, values.password).then((res) => {
+      auth.login(values.email, values.password).then((data) => {
+        if (data.token) { // если все отлично
+          localStorage.setItem('jwt', data.token)
+          handleAuth() // передали
+        } else {
+          return Promise.reject("Токен не предоставлен!")
+        }
+      }).catch((err) => {
+        setErrorApi(err)
+      })
+    }).catch((err) => { 
+      setErrorApi(err)
+    })
+  }
 
   return (
     <AuthPage
 			name = { 'register' }
 			title = { 'Добро пожаловать!' }
 			button = { 'Зарегистрироваться' }
+      buttonType = { buttonType }
 			note = { 'Уже зарегистрированы? ' }
 			link = { '/signin' }
 			linkText = { 'Войти' }
+			handleSubmit = { handleSubmit }
+			errorApi = { errorApi }
 		>
 			<p className='auth-page__input-name'>Имя</p>
 			<label className='auth-page__field'>

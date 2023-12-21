@@ -1,19 +1,45 @@
+import React, {useState} from 'react'
+import * as auth from '../../utils/Auth'
 import './Login.css'
 import AuthPage from '../AuthPage/AuthPage'
 import { UseFormAndValidation } from '../../hooks/useFormAndValidation.js'
+import { useNavigate } from 'react-router-dom'
 
-export default function Login() {
+export default function Login({ handleAuth }) {
 
-	const {values, handleChange, errors} = UseFormAndValidation({email: '', password: ''})
+	const {values, handleChange, errors, buttonType} = UseFormAndValidation({email: '', password: ''})
+  const [errorApi, setErrorApi] = useState('')
+  const navigate = useNavigate()
+
+  function handleSubmit (e) {
+    e.preventDefault()
+    if (!values.email || !values.password) { // если один из инпутов пустой
+      return // вышли
+    }
+    auth.login(values.email, values.password).then((data) => {
+      if (data.token) { // если все отлично
+        localStorage.setItem('jwt', data.token)
+        handleAuth() // передали
+        navigate('/movies', {replace: true}) // перешли
+      } else {
+        return Promise.reject("Токен не предоставлен!")
+      }
+    }).catch((err) => {
+      setErrorApi(err)
+    })
+  }
 
   return (
     <AuthPage
 			name = { 'login' }
 			title = { 'Рады видеть!' }
 			button = { 'Войти' }
+			buttonType = { buttonType }
 			note = { 'Ещё не зарегистрированы? ' }
 			link = { '/signup' }
 			linkText = {'Регистрация'}
+      handleSubmit = { handleSubmit }
+			errorApi = { errorApi }
     >
 			<p className='auth-page__input-name'>E-mail</p>
 			<label className='auth-page__field'>

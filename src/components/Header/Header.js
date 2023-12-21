@@ -4,7 +4,7 @@ import headerLogo from '../../images/logo/logo.svg'
 import { NavLink } from 'react-router-dom'
 import Navigation from '../Navigation/Navigation'
 
-export default function Header({ loggedIn = true }) {
+export default function Header({ loggedIn }) {
 
   const [statusBurger, onMenu] = React.useState(false)
 

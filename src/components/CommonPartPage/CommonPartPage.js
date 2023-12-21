@@ -1,12 +1,12 @@
 import Header from "../Header/Header"
 import Footer from '../Footer/Footer'
 
-export default function StandartPage({element: Component, ...props}) {
+export default function CommonPartPage({element: Component, ...props}) {
   return (
     <>
-    <Header />
-    <Component {...props} />
-    <Footer />
+      <Header loggedIn={props.loggedIn} />
+      <Component {...props} />
+      <Footer />
     </>
   )
 }

@@ -21,7 +21,10 @@
   font-size: 13px;
   font-weight: 500;
   line-height: 16px;
-  margin: 16px 0 0 16px;
+  margin: 16px 50px 0 16px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .movies-card__length {
@@ -38,9 +41,9 @@
 .movies-card__delete {
   position: absolute;
   right: 28px;
-  bottom: 51px;
-  width: 7px;
-  height: 8px;
+  bottom: 44px;
+  width: 12px;
+  height: 12px;
   background-image: url(../../../../images/delete.svg);
   background-color:#222;
   background-size: cover;
@@ -59,19 +62,14 @@
   }
 
   .movies-card__name {
-    margin: 14px 0 0 14px;
+    margin: 14px 48px 0 14px;
   }
 
   .movies-card__length {
     margin: 15px 0 14px 14px;
   }
 
-  .movies-card__saved {
-    right: 22px;
-    bottom: 42px;
-  }
-
-  .movies-card__unsaved {
+  .movies-card__delete {
     right: 22px;
     bottom: 42px;
   }
@@ -90,7 +88,7 @@
   .movies-card__name {
     font-size: 12px;
     line-height: 15px;
-    margin: 14px 0 0 14px;
+    margin: 14px 44px 0 10px;
   }
 
   .movies-card__length {
@@ -99,12 +97,7 @@
     margin: 14px;
   }
 
-  .movies-card__saved {
-    right: 18px;
-    bottom: 40px;
-  }
-
-  .movies-card__unsaved {
+  .movies-card__delete {
     right: 18px;
     bottom: 40px;
   }
