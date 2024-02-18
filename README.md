@@ -1,7 +1,7 @@
 # movies-explorer-frontend
 Репозиторий для front-end проекта `Movie Explorer`. Проект представляет собой учебную версию интерактивного веб-сервиса, в котором можно найти фильмы и сохранить понравившиеся в личном кабинете.
 
-[Верстка по макету в Figma - Dark-3](https://www.figma.com/file/6FMWkB94wE7KTkcCgUXtnC/light-1?type=design&node-id=891-3857&mode=design&t=2o1n0jVrlmCiWxAF-0)
+[Верстка по макету в Figma - Dark-3](https://www.figma.com/file/6FMWkB94wE7KTkcCgUXtnC/light-1?type=design&node-id=891-3857&mode=design)
 
 Адрес репозитория: 
 - https://github.com/kkirillovv/movies-explorer-api (backend ❤️)
@@ -10,10 +10,11 @@
 ## Что сделал
 * сверстал компоненты на React и портировал разметку в его формат;
 * реализовал ассинхронные запросы к API;
-* проработал логику роутов для авторизованных и неавторизованных пользователей.
+* проработал логику роутов и состояние интерфейсов для авторизованных и неавторизованных пользователей.
   
 ## Стек технологий
 <div align="center">
+  <img alt="Static Badge" src="https://img.shields.io/badge/Figma-grey?logo=figma&logoColor=black&labelColor=f0b354" height=30>
   <img alt="Block, element, model" src="https://img.shields.io/badge/BEM-grey?logoColor=black&labelColor=f0b354" height=30>
   <img alt="HTML" src="https://img.shields.io/badge/HTML-grey?logo=HTML5&logoColor=black&labelColor=f0b354" height=30>
   <img alt="CSS" src="https://img.shields.io/badge/CSS-grey?logo=CSS3&logoColor=black&labelColor=f0b354" height=30>
